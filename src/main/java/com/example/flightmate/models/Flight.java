@@ -29,9 +29,8 @@ public class Flight {
     public Flight() {
     }
 
-    public Flight(Long id, String flightNumber, String departureAirport, String arrivalAirport,
-                  LocalDateTime departureTime, BigDecimal basePrice, LocalDateTime arrivalTime, FlightStatus status) {
-        this.id = id;
+    public Flight(String flightNumber, String departureAirport, String arrivalAirport,
+                  LocalDateTime departureTime, LocalDateTime arrivalTime,BigDecimal basePrice, FlightStatus status) {
         this.flightNumber = flightNumber;
         this.departureAirport = departureAirport;
         this.arrivalAirport = arrivalAirport;
