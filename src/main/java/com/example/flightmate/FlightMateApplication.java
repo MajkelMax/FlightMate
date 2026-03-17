@@ -1,6 +1,6 @@
 package com.example.flightmate;
 
-import com.example.flightmate.models.Users;
+import com.example.flightmate.models.User;
 import com.example.flightmate.repositories.UsersRepository;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
@@ -19,7 +19,7 @@ public class FlightMateApplication {
     @Bean
     CommandLineRunner testDatabase(UsersRepository usersRepository){
         return args -> {
-            Users janKowalski = new Users("Jan", "Kowalski", "JK@gmail.com", "Password");
+            User janKowalski = new User("Jan", "Kowalski", "JK@gmail.com", "Password");
             usersRepository.save(janKowalski);
             Thread.sleep(1000);
             janKowalski.setEmail("JKv2@gmail.com");

@@ -7,15 +7,19 @@ import org.springframework.data.jpa.domain.support.AuditingEntityListener;
 import java.time.LocalDateTime;
 
 @Entity
+@Table(name = "users")
 @EntityListeners(AuditingEntityListener.class)
-public class Users {
+public class User {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-
+    @Column(nullable = false)
     private String firstName;
+    @Column(nullable = false)
     private String lastName;
+    @Column(nullable = false, unique = true)
     private String email;
+    @Column(nullable = false)
     private String passwordHash;
 
     @CreatedDate
@@ -26,15 +30,15 @@ public class Users {
     @Column(nullable = false)
     private LocalDateTime updatedAt;
 
-    public Users(String firstName, String lastName, String email,
-                 String passwordHash) {
+    public User(String firstName, String lastName, String email,
+                String passwordHash) {
         this.firstName = firstName;
         this.lastName = lastName;
         this.email = email;
         this.passwordHash = passwordHash;
     }
 
-    public Users() {}
+    public User() {}
 
     public Long getId() {
         return id;
@@ -78,14 +82,6 @@ public class Users {
 
     public void setPasswordHash(String passwordHash) {
         this.passwordHash = passwordHash;
-    }
-
-    public void setCreatedAt(LocalDateTime createdAt) {
-        this.createdAt = createdAt;
-    }
-
-    public void setUpdatedAt(LocalDateTime updatedAt) {
-        this.updatedAt = updatedAt;
     }
 
     @Override
